@@ -1,0 +1,8 @@
+{
+	'success' : true,
+	'results' : [
+		{'name' : 'Type1'},
+		{'name' : 'Type2'},
+		{'name' : 'Type3'}
+	]
+}
