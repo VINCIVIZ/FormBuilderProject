@@ -3,7 +3,7 @@ Ext.define('FormBuilder.controller.CommonTypeList', {
 
     refs: [{
         ref: 'CommonTypeList',
-        selector: 'commonTypeList'
+        selector: 'CommonTypeList'
     }],
 
     stores: ['CommonType'],
@@ -18,4 +18,17 @@ Ext.define('FormBuilder.controller.CommonTypeList', {
     
     onCommonTypeLoad: function() {
     }, 
+    
+    init: function() {
+    	this.control({
+    		'CommonTypeList': {
+    			itemdblclick: this.onItemDoubleClick
+    		},
+    	});
+    },
+    
+    onItemDoubleClick: function(grid, record, item, index, event) {
+    	formEditor = this.getController('FormEditor');
+    	formEditor.addField(record.raw.name);
+    },
 });

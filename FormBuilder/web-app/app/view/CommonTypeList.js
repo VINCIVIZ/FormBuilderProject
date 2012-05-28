@@ -8,6 +8,7 @@ Ext.define('FormBuilder.view.CommonTypeList', {
 	title: 'Common Types',
 	
 	columns: [{
+		header: 'Event',
 		dataIndex: 'name',
 		flex: 1
 	}],
