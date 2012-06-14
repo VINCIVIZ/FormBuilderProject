@@ -6,7 +6,7 @@ Ext.define('FormBuilder.controller.FormEditor', {
         selector: 'FormEditor'
     }],
     
-    addField: function(name) {
+    addElement: function(name) {
     	Ext.Ajax.request({
     		url: 'ClinicalVariable/fields',
     		params: {
@@ -21,19 +21,19 @@ Ext.define('FormBuilder.controller.FormEditor', {
     onFieldDescReady: function(response, options) {
 		desc = eval(response.responseText);
 		desc = desc.sort(function(a,b) {
-			if (a.type == 'Literal') {
-				if (b.type == 'Literal') {
-					return a.name < b.name ? -1 : 1;
+			if (a.displayLevel != null) {
+				if (b.displayLevel != null) {
+					return a.displayLevel - b.displayLevel;
 				} else {
 					return -1;
 				}
-			} else if (b.type == 'Literal'){
+			} else if (b.displayLevel != null){
 				return 1;
 			} else {
-				if (a.attributes.length == b.attributes.length) {
-					return a.name < b.name ? -1 : 1;
+				if (a.members.length == b.members.length) {
+					return a.caption < b.caption ? -1 : 1;
 				} else {
-					return a.attributes.length - b.attributes.length;
+					return a.members.length - b.members.length;
 				}
 			}
 		});
@@ -49,7 +49,9 @@ Ext.define('FormBuilder.controller.FormEditor', {
 			collapsible: true,
 		});			
 		
-		for (i in desc) {
+		controller.addFields(fieldSet, desc);
+		
+		/*for (i in desc) {
 			if (desc[i].type == "Literal" || desc[i].attributes.length == 1) {
 				fieldSet.add({
 					xtype: 'checkbox',
@@ -75,7 +77,39 @@ Ext.define('FormBuilder.controller.FormEditor', {
 					});
 				}
 			}
-		}
+		}*/
+    },
+    
+    addFields: function(fieldSet, desc) {
+    	for (i in desc) {
+    		if (desc[i].className == 'ComplexClinicalVariable' && desc[i].members != null && desc[i].members.length > 0) {
+    			subFieldSet = fieldSet.add({
+    				xtype: 'fieldset',
+    				title: desc[i].caption,
+    				defaultType: 'textfield',
+    				layout: 'anchor',
+    				checkboxToggle: true,
+    				margin: '20px 0 0 0',
+    				padding: '5px 0 10px 10px',
+    			});
+    			this.addFields(subFieldSet, desc[i].members);
+    		} else {
+    			checkBox = fieldSet.add({
+    				xtype: 'checkbox',
+    				boxLabel: desc[i].caption,
+    				checked: true,
+    				enabled: desc[i].optional,
+    				margin: '0 0 5px 10px',
+    			});
+    			
+    			if (desc[i].description != null) {
+    				Ext.create('Ext.tip.ToolTip', {
+    					target: checkBox.boxLabelEl,
+    					html: desc[i].description
+    				});
+    			}
+    		}
+    	}
     },
 });
 

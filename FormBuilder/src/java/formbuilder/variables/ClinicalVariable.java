@@ -80,8 +80,8 @@ public class ClinicalVariable implements Marshallable {
 	@Override
 	public Map<String, Object> getMarshalMap() {
 		HashMap<String, Object> res = new HashMap<String, Object>();
-		res.put("class", this.getClass().getSimpleName());
-		res.put("name", name);
+		res.put("className", this.getClass().getSimpleName());
+		res.put("fieldName", name);
 		res.put("caption", caption);
 		res.put("description", description);
 		res.put("optional", optional);

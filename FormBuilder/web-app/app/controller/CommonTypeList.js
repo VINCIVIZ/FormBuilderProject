@@ -29,6 +29,6 @@ Ext.define('FormBuilder.controller.CommonTypeList', {
     
     onItemDoubleClick: function(grid, record, item, index, event) {
     	formEditor = this.getController('FormEditor');
-    	formEditor.addField(record.raw.name);
+    	formEditor.addElement(record.raw.name);
     },
 });

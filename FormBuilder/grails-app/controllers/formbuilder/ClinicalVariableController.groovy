@@ -23,15 +23,12 @@ class ClinicalVariableController {
 	final String OWL_BASE_URI = "http://idash.ucsd.edu/nlp/NLPschema.owl";
 	final String OWL_FILE_URL = "http://localhost:8080/FormBuilder/data/NLPschema.owl";
 	
-	def test1() {
-		HashMap<String, Object> a = new HashMap<String, Object>();
-		a.put("name", 1);
-		a.put("count", "2b");
-		render a as JSON;
-	}
-	
 	def json() {
-		render OntologyParser.sharedParser().listEvents() as JSON;
+		def res = [];
+		for (String name : OntologyParser.sharedParser().listEvents()) {
+			res.add(name:name);
+		}
+		render res as JSON;
 	}
 	
 	def fields() {

@@ -7,7 +7,6 @@ import java.util.List;
 import com.hp.hpl.jena.ontology.AnnotationProperty;
 import com.hp.hpl.jena.ontology.CardinalityRestriction;
 import com.hp.hpl.jena.ontology.Individual;
-import com.hp.hpl.jena.ontology.MaxCardinalityQRestriction;
 import com.hp.hpl.jena.ontology.MaxCardinalityRestriction;
 import com.hp.hpl.jena.ontology.ObjectProperty;
 import com.hp.hpl.jena.ontology.OntClass;
@@ -18,9 +17,7 @@ import com.hp.hpl.jena.ontology.Restriction;
 import com.hp.hpl.jena.ontology.SomeValuesFromRestriction;
 import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.RDFNode;
-import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 
 import formbuilder.variables.BooleanClinicalVariable;
@@ -118,6 +115,9 @@ public class OntologyParser {
 			}
 			
 			var.setName(propertyName);
+			if (var.getCaption() == null) {
+				var.setCaption(propertyName);
+			}
 			
 			res.add(var);
 		}
@@ -224,7 +224,7 @@ public class OntologyParser {
 			}
 		}
 		
-		return (res.size() == 0) ? null : res;	
+		return (res.size() == 0 || res.size() == 6) ? null : res;	
 		//FIXME: if <xxxValue> is defined in NamedIndividual, it is always unexpectedly contained in some classes. 
 	}
 }
