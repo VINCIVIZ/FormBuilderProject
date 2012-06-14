@@ -37,7 +37,6 @@
 
     <owl:AnnotationProperty rdf:about="http://idash.ucsd.edu/nlp/NLPschema.owl#displayLevel"/>
     <owl:AnnotationProperty rdf:about="http://idash.ucsd.edu/nlp/NLPschema.owl#altLabel"/>
-    <owl:AnnotationProperty rdf:about="http://idash.ucsd.edu/nlp/NLPschema.owl#definition"/>
     
 
 
@@ -765,31 +764,19 @@
         <rdfs:subClassOf rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Element"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasBirthDate"/>
+                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Date"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasMiddleName"/>
                 <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#MiddleName"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasAge"/>
-                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Age"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasDeathDate"/>
-                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Date"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasRace"/>
-                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Race"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasBirthDate"/>
                 <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Date"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -801,14 +788,26 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasFirstName"/>
-                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#FirstName"/>
+                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasAge"/>
+                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Age"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasEthnicity"/>
                 <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Ethnicity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasRace"/>
+                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Race"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasFirstName"/>
+                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#FirstName"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -827,14 +826,14 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasBodySide"/>
-                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#BodySide"/>
+                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasCourse"/>
+                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Course"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasCourse"/>
-                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Course"/>
+                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasBodySide"/>
+                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#BodySide"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -863,26 +862,26 @@
         <rdfs:subClassOf rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Element"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasConditional"/>
-                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Conditional"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasGeneric"/>
                 <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Generic"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasUncertainty"/>
-                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Uncertainty"/>
+                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasConditional"/>
+                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Conditional"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasPolarity"/>
                 <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Polarity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasUncertainty"/>
+                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Uncertainty"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -909,20 +908,8 @@
         <rdfs:subClassOf rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Element"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasDegree"/>
-                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Degree"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasPolarity"/>
-                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Polarity"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasContextualModality"/>
-                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#ContextualModality"/>
+                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasContextualAspect"/>
+                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#ContextualAspect"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -939,20 +926,32 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasContextualAspect"/>
-                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#ContextualAspect"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasAspect"/>
                 <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Aspect"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasPolarity"/>
+                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Polarity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasDocTimeRel"/>
                 <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#DocTimeRel"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasContextualModality"/>
+                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#ContextualModality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasDegree"/>
+                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Degree"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -1027,13 +1026,13 @@
         <rdfs:subClassOf rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Attribute"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#unit"/>
+                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#number"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#number"/>
+                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#unit"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1055,32 +1054,8 @@
         <rdfs:subClassOf rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Event"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasFrequency"/>
-                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#MedicationFrequency"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasForm"/>
                 <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#MedicationForm"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasDosage"/>
-                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#MedicationDosage"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasStatusChange"/>
-                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#MedicationStatusChange"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasStrength"/>
-                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#MedicationStrength"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1091,8 +1066,32 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasFrequency"/>
+                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#MedicationFrequency"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasStrength"/>
+                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#MedicationStrength"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasStatusChange"/>
+                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#MedicationStatusChange"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasMedDuration"/>
                 <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#MedicationDuration"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasDosage"/>
+                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#MedicationDosage"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -1165,13 +1164,13 @@
         <rdfs:subClassOf rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Attribute"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#number"/>
+                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#unit"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#unit"/>
+                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#number"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1200,7 +1199,7 @@
     <owl:Class rdf:about="http://idash.ucsd.edu/nlp/NLPschema.owl#Polarity">
         <rdfs:subClassOf rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Property"/>
         <altLabel>Negation Indicator</altLabel>
-        <definition>Displays whether a concept is negated or not.</definition>
+        <rdfs:isDefinedBy>Displays whether a concept is negated or not.</rdfs:isDefinedBy>
     </owl:Class>
     
 
@@ -1225,8 +1224,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasMethod"/>
-                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#ProcedureMethod"/>
+                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasBodySide"/>
+                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#BodySide"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1237,8 +1236,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasBodySide"/>
-                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#BodySide"/>
+                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasMethod"/>
+                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#ProcedureMethod"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -1293,8 +1292,8 @@
         <rdfs:subClassOf rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Event"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasBodySide"/>
-                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#BodySide"/>
+                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasCourse"/>
+                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Course"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1311,8 +1310,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasCourse"/>
-                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Course"/>
+                <owl:onProperty rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#hasBodySide"/>
+                <owl:someValuesFrom rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#BodySide"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -1345,7 +1344,7 @@
 
     <owl:Class rdf:about="http://idash.ucsd.edu/nlp/NLPschema.owl#Subject">
         <rdfs:subClassOf rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Property"/>
-        <definition>Displays whether a concept is related to the patient, family member or other.</definition>
+        <rdfs:isDefinedBy>Displays whether a concept is related to the patient, family member or other.</rdfs:isDefinedBy>
     </owl:Class>
     
 
@@ -1362,7 +1361,7 @@
 
     <owl:Class rdf:about="http://idash.ucsd.edu/nlp/NLPschema.owl#Uncertainty">
         <rdfs:subClassOf rdf:resource="http://idash.ucsd.edu/nlp/NLPschema.owl#Property"/>
-        <definition>Displays whether a concept is probable, possible or not likely based on a concept&#39;s context.</definition>
+        <rdfs:isDefinedBy>Displays whether a concept is probable, possible or not likely based on a concept&#39;s context.</rdfs:isDefinedBy>
     </owl:Class>
     
 

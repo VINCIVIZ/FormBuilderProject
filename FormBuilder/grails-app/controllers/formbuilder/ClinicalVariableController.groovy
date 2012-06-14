@@ -24,8 +24,10 @@ class ClinicalVariableController {
 	final String OWL_FILE_URL = "http://localhost:8080/FormBuilder/data/NLPschema.owl";
 	
 	def test1() {
-		TextClinicalVariable ff = new TextClinicalVariable();
-		render ff as JSON;
+		HashMap<String, Object> a = new HashMap<String, Object>();
+		a.put("name", 1);
+		a.put("count", "2b");
+		render a as JSON;
 	}
 	
 	def json() {
