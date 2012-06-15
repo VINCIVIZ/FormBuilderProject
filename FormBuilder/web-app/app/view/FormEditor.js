@@ -1,6 +1,11 @@
 Ext.define('FormBuilder.view.FormEditor', {
-	extend:'Ext.form.Panel',
+	extend:'Ext.panel.Panel',
 	alias: 'widget.FormEditor',
+	
+    requires: [
+		'FormBuilder.view.VariableFieldSet',
+	],
+	
 	bodyPadding: 10, 
 	autoScroll: true,
 	 
