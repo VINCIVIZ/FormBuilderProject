@@ -7,8 +7,8 @@ Ext.application({
     
     autoCreateViewport: true,
     
-    models: ['CommonType', 'FormEditor'],
-    stores: ['CommonType'],
-    controllers: ['CommonTypeList', 'FormEditor']
+    models: ['CommonType', 'FormEditor', 'Schema'],
+    stores: ['CommonType', 'Schema'],
+    controllers: ['CommonTypeList', 'FormEditor', 'SchemaList']
 });
 

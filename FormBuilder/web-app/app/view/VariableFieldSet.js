@@ -54,7 +54,8 @@ Ext.define('FormBuilder.view.VariableFieldSet', {
     				padding: '5px 0 10px 10px',
     				defaults: {
     					margin: '0 20px 0 10px',
-    				}
+    				},
+    				fieldDesc: desc[i],
     			});
     			this.addSubFields(subFieldSet, desc[i].members, true);
     		} else {
@@ -84,6 +85,6 @@ Ext.define('FormBuilder.view.VariableFieldSet', {
     		this.putBackCombo.hide();
     	}
     	
-    	Ext.getElementById(fieldSettingPanel.id).scrollIntoView();
+    	fieldSettingPanel.el.dom.scrollIntoView();
     }
 });

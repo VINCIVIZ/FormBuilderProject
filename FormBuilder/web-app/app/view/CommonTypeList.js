@@ -8,9 +8,18 @@ Ext.define('FormBuilder.view.CommonTypeList', {
 	title: 'Common Types',
 	
 	columns: [{
-		header: 'Event',
+		header: 'Element',
 		dataIndex: 'name',
 		flex: 1
 	}],
+	
+	viewConfig: {
+		plugins: {
+			ptype: 'gridviewdragdrop',
+			dragText: 'Drag and drop in Form Editor to insert new element. ',
+			enableDrop: false,
+			dragGroup: 'elementDdGroup'
+		}
+	}
 });
 

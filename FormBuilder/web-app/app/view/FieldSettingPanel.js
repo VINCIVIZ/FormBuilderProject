@@ -81,18 +81,25 @@ Ext.define('FormBuilder.view.FieldSettingPanel', {
 			this.previewPanel.add({
 				xtype: 'textfield',
 				fieldLabel: this.fieldDesc.caption,
-				labelWidth: 150,
 			});
 		} else if (dataType == 'BooleanClinicalVariable') {
 			alert('Unimplemented ' + dataType);
 		} else if (dataType == 'IntegerClinicalVariable') {
-			alert('Unimplemented ' + dataType);
+			this.previewPanel.add({
+				xtype: 'numberfield',
+				fieldLabel: this.fieldDesc.caption,
+				minValue: this.fieldDesc.minValue,
+				maxValue: this.fieldDesc.maxValue
+			});
 		} else if (dataType == 'DoubleClinicalVariable') {
 			alert('Unimplemented ' + dataType);
 		} else if (dataType == 'TimeClinicalVariable') {
 			alert('Unimplemented ' + dataType);
 		} else if (dataType == 'DateClinicalVariable') {
-			alert('Unimplemented ' + dataType);
+			this.previewPanel.add({
+				xtype: 'datefield',
+				fieldLabel: this.fieldDesc.caption,
+			});
 		} else if (dataType == 'ComplexClinicalVariable') {
 			alert('Unimplemented ' + dataType);
 		} else {

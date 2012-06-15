@@ -63,11 +63,14 @@ public class OntologyParser {
 		
 		model.read(OWL_FILE_URL, OWL_BASE_URI, null);
 		
-		OntClass eventClass = model.getOntClass(OWL_BASE_URI + "#Event");
+		OntClass eventClass = model.getOntClass(OWL_BASE_URI + "#Element");
 		ExtendedIterator it = eventClass.listSubClasses();
 		while(it.hasNext()) {
 			OntClass subClass = (OntClass) it.next();
 			String name = subClass.getLocalName();
+			if (name.equals("Event") || name.equals("Entity")) {
+				continue;
+			}
 			res.add(name);
 		}
 		
@@ -163,36 +166,48 @@ public class OntologyParser {
 		} else if (prop.isObjectProperty()) {
 			ObjectProperty p = prop.asObjectProperty();
 			
-			ComplexClinicalVariable v = new ComplexClinicalVariable();
 			OntResource range = p.getRange();
-			v.setTypeName(range == null ? typeHint : range.getLocalName());
-			v.setMembers(getFields(v.getTypeName()));
-			v.setEnumValues(getEnumValues(v.getTypeName()));
+			String typeName = range == null ? typeHint : range.getLocalName();
 			
-			//read annotations
-			if (v.getTypeName() != null) {
-				OntClass clz = model.getOntClass(OWL_BASE_URI + "#" + v.getTypeName());
+			if (typeName != null) {
+				List<ClinicalVariable> members = getFields(typeName);
+				HashMap<String, String> enumValues = getEnumValues(typeName);
+				
+				if (members.size() != 0 || (enumValues != null && enumValues.size() > 0)) {
+					ComplexClinicalVariable v = new ComplexClinicalVariable();
+					v.setTypeName(typeName);
+					v.setMembers(members);
+					v.setEnumValues(enumValues);
+					res = v;
+				} else {
+					//this is just a simple type
+					res = getTypeByTrick(typeName);
+				}
+				
+				//read annotations
+				OntClass clz = model.getOntClass(OWL_BASE_URI + "#" + typeName);
 				RDFNode labelNode = clz.hasProperty(altLabelProp) ? clz.getPropertyValue(altLabelProp) : null;
 				if (labelNode != null) {
 					Literal literal = (Literal)labelNode.as(Literal.class);
-					v.setCaption(literal.getString());
+					res.setCaption(literal.getString());
 				}
 				
 				RDFNode defNode = clz.hasProperty(definitionProp) ? clz.getPropertyValue(definitionProp) : null;
 				if (defNode != null) {
 					Literal literal = (Literal)defNode.as(Literal.class);
-					v.setDescription(literal.getString());
+					res.setDescription(literal.getString());
 				}
 				
+			} else {
+				res = new TextClinicalVariable();
+				throw new AssertionError();
 			}
 			
 			if (prop.hasProperty(displayLevelProp)) {
 				RDFNode defNode = prop.getPropertyValue(displayLevelProp);
 				Literal literal = (Literal)defNode.as(Literal.class);
-				v.setDisplayLevel(new Nullable<Integer>(literal.getInt()));
+				res.setDisplayLevel(new Nullable<Integer>(literal.getInt()));
 			}
-			
-			res = v;
 			
 		} else {
 			res = new TextClinicalVariable();
@@ -226,5 +241,26 @@ public class OntologyParser {
 		
 		return (res.size() == 0 || res.size() == 6) ? null : res;	
 		//FIXME: if <xxxValue> is defined in NamedIndividual, it is always unexpectedly contained in some classes. 
+	}
+	
+	private ClinicalVariable getTypeByTrick(String typeName) {
+		if (typeName.equals("Age")) {
+			IntegerClinicalVariable v = new IntegerClinicalVariable();
+			v.setMinValue(new Nullable<Integer>(0));
+			return v;
+		} else if (typeName.equals("Date")) {
+			return new DateClinicalVariable();
+		} else if (typeName.equals("Time")) {
+			return new TimeClinicalVariable(); 
+		} else if (typeName.equals("Gender")) {
+			ComplexClinicalVariable v = new ComplexClinicalVariable();
+			v.setTypeName(typeName);
+			HashMap<String, String> enumValues = new HashMap<String, String>();
+			enumValues.put("Male", "Male");
+			enumValues.put("Female", "Female");
+			return v;
+		} else {
+			return new TextClinicalVariable();
+		}
 	}
 }

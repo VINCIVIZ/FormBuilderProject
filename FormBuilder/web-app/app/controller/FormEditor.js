@@ -6,6 +6,10 @@ Ext.define('FormBuilder.controller.FormEditor', {
         selector: 'FormEditor'
     }],
     
+    onLaunch: function() {
+    	this.getFormEditor().controller = this;
+    },
+    
     addElement: function(name) {
     	Ext.Ajax.request({
     		url: 'ClinicalVariable/fields',
@@ -29,12 +33,16 @@ Ext.define('FormBuilder.controller.FormEditor', {
 				}
 			} else if (b.displayLevel != null){
 				return 1;
-			} else {
-				if (a.members.length == b.members.length) {
-					return a.caption < b.caption ? -1 : 1;
-				} else {
+			} else if (a.className == 'ComplexClinicalVariable') {
+				if (b.className == 'ComplexClinicalVariable') {
 					return a.members.length - b.members.length;
-				}
+				} else {
+					return 1;
+				}				
+			} else if (b.className == 'ComplexClinicalVariable') {
+				return -1;
+			} else {
+				return a.fieldName < b.fieldName ? 1 : -1;
 			}
 		});
 		
@@ -44,10 +52,66 @@ Ext.define('FormBuilder.controller.FormEditor', {
 		fieldSet = view.add({
 			xtype: 'VariableFieldSet',
 			title: options.fieldName,
+			fieldName: options.fieldName,
 		});			
 		
 		fieldSet.setFields(desc);
+		
+		fieldSet.el.dom.scrollIntoView();
     },
     
+    saveSchema : function(schemaName) {
+    	view = this.getFormEditor();
+    	
+    	var res = [];
+    	for (i in view.items.items) {
+    		varFieldSet = view.items.items[i];
+    		varRes = {
+    			name: varFieldSet.fieldName,
+    			fields: this.getFieldSetResult(varFieldSet),
+    		};
+    		
+    		res.push(varRes);
+    	}
+    	
+    	Ext.Ajax.request({
+    		url: 'Schema/save',
+    		params: {
+    			schemaName: schemaName,
+    			content: JSON.stringify(res),
+    		},
+    		sender: this,
+    		schemaName: schemaName,
+    		success: function(response, options) {
+    			options.sender.getController('SchemaList').refreshList();
+    		}
+    	});
+    },
+    
+    getFieldSetResult : function(fieldSet) {
+    	var fieldRes = [];
+		for (j in fieldSet.items.items) {
+			field = fieldSet.items.items[j];
+			if (field.xtype == 'FieldSettingPanel') {
+				if (field.isHidden()) {
+					continue;
+				}
+				fieldRes.push({
+					fieldName: field.fieldDesc.fieldName,
+					caption: field.fieldDesc.caption,
+					description: field.fieldDesc.description,
+				});
+			} else if (field.xtype == 'fieldset') {
+				fieldRes.push({
+					fieldName: field.fieldDesc.fieldName,
+					caption: field.fieldDesc.caption,
+					description: field.fieldDesc.description,
+					members: this.getFieldSetResult(field)
+				});
+			}
+		}
+		
+		return fieldRes;
+    }
 });
 

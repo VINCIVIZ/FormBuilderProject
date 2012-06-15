@@ -25,6 +25,8 @@ Ext.define('FormBuilder.controller.CommonTypeList', {
     			itemdblclick: this.onItemDoubleClick
     		},
     	});
+    	
+    	//this.getCommonTypeList()
     },
     
     onItemDoubleClick: function(grid, record, item, index, event) {

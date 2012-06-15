@@ -37,11 +37,13 @@ Ext.define('FormBuilder.view.FieldForm', {
 				form.findField('description').getValue()
 			);
 		},
+		itemId: 'doneButton',
 	}, {
 		text: 'Remove', 
 		handler : function() {
 			this.up('FieldSettingPanel').removeVariable();
-		}
+		},
+		itemId: 'removeButton',
 	}],
 	
 	buttonAlign: 'left',
@@ -50,6 +52,7 @@ Ext.define('FormBuilder.view.FieldForm', {
 		this.getForm().findField('caption').setValue(desc.caption);
 		this.getForm().findField('description').setValue(desc.description);
 		this.getForm().findField('varName').setValue(desc.fieldName);
+		this.query('#removeButton')[0].setDisabled(!desc.optional);
 		
 		var dataType = this.up('FieldSettingPanel').getDataType();
 		if (Ext.isObject(dataType)) {
