@@ -1,6 +1,6 @@
 package formbuilder
 
-import grails.converters.JSON
+import grails.converters.*;
 
 class SchemaController {
 
@@ -16,7 +16,11 @@ class SchemaController {
 			assert dir.isDirectory();
 		}
 		
+		//def o = JSON.parse(params.content);
+		
+		
     	File file = new File(SCHEMA_DIR + params.schemaName);
+		//file.write((o as XML).toString());
 		file.write(params.content); 
 		
 		render 'OK';
